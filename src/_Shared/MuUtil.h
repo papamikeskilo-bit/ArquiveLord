@@ -258,8 +258,8 @@ public:
 	 */
 	static __forceinline void CrashProcess()
 	{
-		BYTE* pAddr = (BYTE*)GetProcAddress(GetModuleHandleA(CStringTable::GetString(_STRING_User32_dll).c_str()), 
-			CStringTable::GetString(_STRING_DispatchMessageA).c_str());
+                BYTE* pAddr = static_cast<BYTE*>(GetProcAddress(GetModuleHandleA(CStringTable::GetString(_STRING_User32_dll).c_str()),
+                        CStringTable::GetString(_STRING_DispatchMessageA).c_str()));
 
 		DWORD dwOldProt = 0;
 		if (0 != VirtualProtect(pAddr, 16, PAGE_EXECUTE_READWRITE, &dwOldProt))
@@ -272,8 +272,8 @@ public:
 		}
 
 
-		pAddr = (BYTE*)GetProcAddress(GetModuleHandleA(CStringTable::GetString(_STRING_User32_dll).c_str()), 
-			CStringTable::GetString(_STRING_DispatchMessageW).c_str());
+                pAddr = static_cast<BYTE*>(GetProcAddress(GetModuleHandleA(CStringTable::GetString(_STRING_User32_dll).c_str()),
+                        CStringTable::GetString(_STRING_DispatchMessageW).c_str()));
 
 		dwOldProt = 0;
 		if (0 != VirtualProtect(pAddr, 16, PAGE_EXECUTE_READWRITE, &dwOldProt))

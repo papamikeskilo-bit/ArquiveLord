@@ -45,6 +45,9 @@
 // #include <atlcom.h>
 // #include <atlwin.h>
 #include <atlstr.h>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
 
 using namespace ATL;
 
