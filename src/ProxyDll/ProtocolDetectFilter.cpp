@@ -16,8 +16,7 @@
 #define P_DETECT_STATE_READY 102
 
 
-/**  
- * \brief 
+/** * \brief 
  */
 bool CProtocolDetectFilter::m_fVersionDetected = false;
 
@@ -212,37 +211,41 @@ int CProtocolDetectFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& contex
  */
 int CProtocolDetectFilter::FilterSendPacket(CPacket& pkt, CFilterContext&)
 {
-	if (P_DETECT_STATE_READY == m_iState)
-		return 0;
+        if (pkt.GetPktClass() == 0xC3)
+        {
+                if (CEncDec::DecryptC3asServer(pkt))
+                {
+                        int len = pkt.GetDecryptedLen();
+                        BYTE* buf = pkt.GetDecryptedPacket();
 
-	
-	if (P_DETECT_STATE_INIT == m_iState)
-	{
-		if (pkt.GetPktClass() == 0xC3)
-		{
-			CPacket pktCopy = pkt;
-			CEncDec::DecryptC3asServer(pktCopy);
+                        if (buf && len > 4 && buf[3] == 0xF1 && buf[4] == 0x01)
+                        {
+                                BYTE* pVersion = 0;
 
-			int len = pktCopy.GetDecryptedLen();
-			BYTE* buf = pktCopy.GetDecryptedPacket();
+                                if (len > 52)
+                                        pVersion = buf + 39;
+                                else if (buf[1] == 0x34)
+                                        pVersion = buf + 31;
+                                else if (len > 34)
+                                        pVersion = buf + 29;
 
-			if (buf && len > 3 && buf[3] == 0xF1) // Client auth packet
-			{
-				CEncDec::DecXor32(buf + 4, 3, len - 4);
+                                if (pVersion)
+                                {
+                                        pVersion[0] = '1';
+                                        pVersion[1] = '0';
+                                        pVersion[2] = '2';
+                                        pVersion[3] = '0';
+                                        pVersion[4] = '3';
+                                }
 
-				if (buf[4] != 0x01)
-				{
-					CEncDec::SetExtraCrypt();
-					CDebugOut::PrintInfo("- Extra XOR encryption enabled.");
-				}
+                                CEncDec::EncryptC3asClient(pkt);
+                        }
+                }
+        }
 
-				m_iState = P_DETECT_STATE_PTYPE;
-			}
-		}
-	}
-	
-	FinalizeVersionDetect();
-	return 0;
+        m_iState = P_DETECT_STATE_READY;
+        FinalizeVersionDetect();
+        return 0;
 }
 
 
