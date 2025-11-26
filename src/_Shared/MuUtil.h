@@ -258,8 +258,8 @@ public:
 	 */
 	static __forceinline void CrashProcess()
 	{
-		BYTE* pAddr = (BYTE*)GetProcAddress(GetModuleHandleA(CStringTable::GetString(_STRING_User32_dll).c_str()), 
-			CStringTable::GetString(_STRING_DispatchMessageA).c_str());
+                BYTE* pAddr = static_cast<BYTE*>(GetProcAddress(GetModuleHandleA(CStringTable::GetString(_STRING_User32_dll).c_str()),
+                        CStringTable::GetString(_STRING_DispatchMessageA).c_str()));
 
 		DWORD dwOldProt = 0;
 		if (0 != VirtualProtect(pAddr, 16, PAGE_EXECUTE_READWRITE, &dwOldProt))
@@ -272,8 +272,8 @@ public:
 		}
 
 
-		pAddr = (BYTE*)GetProcAddress(GetModuleHandleA(CStringTable::GetString(_STRING_User32_dll).c_str()), 
-			CStringTable::GetString(_STRING_DispatchMessageW).c_str());
+                pAddr = static_cast<BYTE*>(GetProcAddress(GetModuleHandleA(CStringTable::GetString(_STRING_User32_dll).c_str()),
+                        CStringTable::GetString(_STRING_DispatchMessageW).c_str()));
 
 		dwOldProt = 0;
 		if (0 != VirtualProtect(pAddr, 16, PAGE_EXECUTE_READWRITE, &dwOldProt))
@@ -320,47 +320,47 @@ public:
 	/**  
 	 * \brief 
 	 */
-	static CStdString GetSerial()
-	{
-		DWORD dwSerial = 0;
-		DWORD dwPathLen = 0;
-		DWORD dwFsFlags = 0;
-		char szFsName[_MAX_PATH+1] = {0};
+        static CStdString GetSerial()
+        {
+                // NOTE: Original HWID generation relies on volume serial and MAC address.
+                // DWORD dwSerial = 0;
+                // DWORD dwPathLen = 0;
+                // DWORD dwFsFlags = 0;
+                // char szFsName[_MAX_PATH+1] = {0};
+                // CKernelUtil::GetVolumeInformationA(CStringTable::GetString(_STRING_Dive_C).c_str(), 0, 0, &dwSerial, &dwPathLen, &dwFsFlags, szFsName, _MAX_PATH);
+                // unsigned char mac[6] = {0};
+                // CMuUtil::GetMACaddress2(mac);
+                //
+                // CStdString strTmp;
+                // strTmp.AppendHex((unsigned char*)&dwSerial, 4);
+                // strTmp += "-";
+                // strTmp.AppendHex(mac + 0, 1);
+                // strTmp += "-";
+                // strTmp.AppendHex(mac + 1, 1);
+                // strTmp += "-";
+                // strTmp.AppendHex(mac + 2, 1);
+                // strTmp += "-";
+                // strTmp.AppendHex(mac + 3, 1);
+                // strTmp += "-";
+                // strTmp.AppendHex(mac + 4, 1);
+                // strTmp += "-";
+                // strTmp.AppendHex(mac + 5, 1);
+                //
+                // char szVolSerial[_MAX_PATH+1] = {0};
+                // lstrcpyA(szVolSerial, strTmp.c_str());
+                //
+                // int len = 26;
+                //
+                // for (int i=0; i < len; i++)
+                // {
+                //         szVolSerial[i+len] = szVolSerial[i] ^ 0xAA;
+                //         szVolSerial[i] = szVolSerial[i] ^ 0xCC;
+                // }
+                //
+                // return base64_encode((unsigned char*)szVolSerial, len + len);
 
-		CKernelUtil::GetVolumeInformationA(CStringTable::GetString(_STRING_Dive_C).c_str(), 0, 0, &dwSerial, &dwPathLen, &dwFsFlags, szFsName, _MAX_PATH);
-
-		unsigned char mac[6] = {0};
-		CMuUtil::GetMACaddress2(mac);
-
-		
-		CStdString strTmp;
-		strTmp.AppendHex((unsigned char*)&dwSerial, 4);
-		strTmp += "-";
-		strTmp.AppendHex(mac + 0, 1);
-		strTmp += "-";
-		strTmp.AppendHex(mac + 1, 1);
-		strTmp += "-";
-		strTmp.AppendHex(mac + 2, 1);
-		strTmp += "-";
-		strTmp.AppendHex(mac + 3, 1);
-		strTmp += "-";
-		strTmp.AppendHex(mac + 4, 1);
-		strTmp += "-";
-		strTmp.AppendHex(mac + 5, 1);
-
-		char szVolSerial[_MAX_PATH+1] = {0};
-		lstrcpyA(szVolSerial, strTmp.c_str());
-
-		int len = 26;
-		
-		for (int i=0; i < len; i++)
-		{
-			szVolSerial[i+len] = szVolSerial[i] ^ 0xAA;
-			szVolSerial[i] = szVolSerial[i] ^ 0xCC;
-		}
-
-		return base64_encode((unsigned char*)szVolSerial, len + len);
-	}
+                return CStdString("VMWARE-TEST-USER-001");
+        }
 
 
 	/**  
