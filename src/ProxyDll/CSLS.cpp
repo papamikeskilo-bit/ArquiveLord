@@ -7,10 +7,14 @@
 
 */
 
-#include <fstream.h>
+#include <fstream>
 #include <ws2spi.h>
 #include <mswsock.h>
 #include <stdio.h>
+
+using std::ifstream;
+using std::ofstream;
+using std::ios;
 
 bool IsAllow(SOCKET s,const sockaddr *name, int func);
 bool IsInAllowRange(long port);

@@ -26,16 +26,10 @@
 			CharacterSet="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -115,10 +109,6 @@
 			<Tool
 				Name="VCAppVerifierTool"
 			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="del &quot;$(TargetDir)\$(TargetName).ilk&quot; /Q /F&#x0D;&#x0A;"
-			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
@@ -130,16 +120,10 @@
 			CharacterSet="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -163,7 +147,7 @@
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;"
-				RuntimeLibrary="0"
+                                RuntimeLibrary="3"
 				RuntimeTypeInfo="false"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile="$(IntDir)\$(TargetName)dll.pch"
@@ -224,10 +208,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="del &quot;$(TargetDir)\$(TargetName).ilk&quot; /Q /F&#x0D;&#x0A;cd $(TargetDir)&#x0D;&#x0A;packer.exe /packall&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
