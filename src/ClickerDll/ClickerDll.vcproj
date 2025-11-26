@@ -47,17 +47,18 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared; .\UI"
-				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_USRDLL;"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				RuntimeTypeInfo="false"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="4"
-			/>
+                                AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared; .\UI"
+                                PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_USRDLL;"
+                                MinimalRebuild="true"
+                                BasicRuntimeChecks="3"
+                                RuntimeLibrary="1"
+                                RuntimeTypeInfo="false"
+                                UsePrecompiledHeader="2"
+                                WarningLevel="3"
+                                Detect64BitPortabilityProblems="false"
+                                DebugInformationFormat="4"
+                                ObjectFileName="$(IntDir)%(RelativeDir)"
+                        />
 			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
@@ -136,16 +137,17 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared; .\UI"
-				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;"
+                                AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared; .\UI"
+                                PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;"
                                 RuntimeLibrary="2"
-				BasicRuntimeChecks="0"
-				RuntimeTypeInfo="false"
-				UsePrecompiledHeader="2"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-			/>
+                                BasicRuntimeChecks="0"
+                                RuntimeTypeInfo="false"
+                                UsePrecompiledHeader="2"
+                                WarningLevel="3"
+                                Detect64BitPortabilityProblems="false"
+                                DebugInformationFormat="3"
+                                ObjectFileName="$(IntDir)%(RelativeDir)"
+                        />
 			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
