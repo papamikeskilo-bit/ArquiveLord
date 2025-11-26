@@ -7,7 +7,6 @@
 #include "ProxyBuilder.h"
 #include "LordOfMUdll.h"
 #include "..\_Shared\CommonPackets.h"
-#include "..\_Shared\PEUtil.h"
 
 
 CProxyClickerModule gModule;
@@ -37,32 +36,40 @@ CProxyClickerModule* CProxyClickerModule::GetInstance()
  */
 bool CProxyClickerModule::Init(LoaderInitStruct* pInit)
 {
-	if (!pInit)
-		return false;
+        m_dwCookie = pInit ? pInit->dwCookie : 0;
+        int iInstNo = 1;
 
-	m_dwCookie = pInit->dwCookie;
-	int iInstNo = 1;
+        if (pInit && pInit->ppMoudle)
+                *pInit->ppMoudle = this;
 
-	if (pInit->ppMoudle)
-		*pInit->ppMoudle = this;
-	
-	if (pInit->pLoader)
-	{
-		m_pLoader = pInit->pLoader;
+        if (pInit && pInit->pLoader)
+        {
+                m_pLoader = pInit->pLoader;
 
-		char szRoot[_MAX_PATH+1] = {0};
-		pInit->pLoader->GetRootDir(szRoot, _MAX_PATH);
+                char szRoot[_MAX_PATH+1] = {0};
+                pInit->pLoader->GetRootDir(szRoot, _MAX_PATH);
 
-		_tcscpy_s(g_szRoot, _MAX_PATH, CA2CT(szRoot));
+                _tcscpy_s(g_szRoot, _MAX_PATH, CA2CT(szRoot));
 
-		HWND hwnd = 0;
-		pInit->pLoader->SendCommand(_MODULE_LOADER_COMMAND_GET_MUWND, _MODULE_LOADER_TARGET_SELF, (void*)&hwnd, (void**)&iInstNo);
-	}
+                HWND hwnd = 0;
+                pInit->pLoader->SendCommand(_MODULE_LOADER_COMMAND_GET_MUWND, _MODULE_LOADER_TARGET_SELF, (void*)&hwnd, (void**)&iInstNo);
+        }
+        else
+        {
+                m_pLoader = 0;
 
-	CDebugOut::Init(iInstNo);
-	CDebugOut::PrintDebug("InternalInit() OK.");
+                TCHAR szRoot[_MAX_PATH + 1] = {0};
+                GetModuleFileName(0, szRoot, _MAX_PATH);
 
-	return true;
+                for (int i = (int)_tcslen(szRoot) - 1; i >= 0 && szRoot[i] != _T('\\'); szRoot[i--] = 0);
+
+                _tcsncpy_s(g_szRoot, _MAX_PATH, szRoot, _TRUNCATE);
+        }
+
+        CDebugOut::Init(iInstNo);
+        CDebugOut::PrintDebug("InternalInit() OK.");
+
+        return true;
 }
 
 
@@ -137,18 +144,27 @@ bool CProxyClickerModule::SendCommand(int iCommand, void* pParam, void** pResult
  */
 extern "C" BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved)
 {
-	if (dwReason == DLL_PROCESS_ATTACH)
-	{
-		DisableThreadLibraryCalls(hInstance);
+        if (dwReason == DLL_PROCESS_ATTACH)
+        {
+                DisableThreadLibraryCalls(hInstance);
 
-		gModule.Init((LoaderInitStruct*)lpReserved);
+                LoaderInitStruct* pInit = 0;
 
-		PeUtil::WipeImportTable((HMODULE)hInstance);
-	}
-	else if (dwReason == DLL_PROCESS_DETACH)
-	{
-		CDebugOut::PrintDebug("DLL_PROCESS_DETACH ... ");
-		gModule.Term();
+                __try
+                {
+                        pInit = reinterpret_cast<LoaderInitStruct*>(lpReserved);
+                }
+                __except(EXCEPTION_EXECUTE_HANDLER)
+                {
+                        pInit = 0;
+                }
+
+                gModule.Init(pInit);
+        }
+        else if (dwReason == DLL_PROCESS_DETACH)
+        {
+                CDebugOut::PrintDebug("DLL_PROCESS_DETACH ... ");
+                gModule.Term();
 	}
 
 	return TRUE; 

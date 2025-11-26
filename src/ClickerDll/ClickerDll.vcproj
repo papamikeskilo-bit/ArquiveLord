@@ -26,16 +26,10 @@
 			CharacterSet="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -110,10 +104,6 @@
 			<Tool
 				Name="VCAppVerifierTool"
 			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="del &quot;$(TargetDir)\$(TargetName).ilk&quot; /Q /F"
-			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
@@ -125,16 +115,10 @@
 			CharacterSet="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -154,7 +138,8 @@
 				Optimization="2"
 				AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared; .\UI"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;"
-				RuntimeLibrary="0"
+                                RuntimeLibrary="2"
+				BasicRuntimeChecks="0"
 				RuntimeTypeInfo="false"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -178,7 +163,7 @@
 				RegisterOutput="false"
 				IgnoreImportLibrary="true"
 				AdditionalOptions="/FUNCTIONPADMIN:6"
-				AdditionalDependencies="opengl32.lib UI.lib glu32.lib"
+				AdditionalDependencies="opengl32.lib UI.lib glu32.lib legacy_stdio_definitions.lib"
 				OutputFile="$(SolutionDir)\bin\$(ConfigurationName)\MUAutoClicker.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories=".\UI"
@@ -210,10 +195,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="del &quot;$(TargetDir)\$(TargetName).ilk&quot; /Q /F&#x0D;&#x0A;cd $(TargetDir)&#x0D;&#x0A;packer.exe /packall&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
