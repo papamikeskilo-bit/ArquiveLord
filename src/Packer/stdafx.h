@@ -8,7 +8,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <intrin.h>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
+
+#if defined(_MSC_VER) && _MSC_VER < 1900
 #pragma intrinsic(strlen,strcpy,strcat,strcmp,memcpy,memset,memcmp)
+#endif
 
 
 #include "targetver.h"
