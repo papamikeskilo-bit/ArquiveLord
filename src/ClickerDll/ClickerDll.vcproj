@@ -74,7 +74,7 @@
 				Name="VCLinkerTool"
 				RegisterOutput="false"
 				IgnoreImportLibrary="true"
-				AdditionalDependencies="opengl32.lib glu32.lib UId.lib "
+				AdditionalDependencies="opengl32.lib glu32.lib legacy_stdio_definitions.lib"
 				OutputFile="$(SolutionDir)\bin\$(ConfigurationName)\MUAutoClicker.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=".\UI"
@@ -163,7 +163,7 @@
 				RegisterOutput="false"
 				IgnoreImportLibrary="true"
 				AdditionalOptions="/FUNCTIONPADMIN:6"
-				AdditionalDependencies="opengl32.lib UI.lib glu32.lib legacy_stdio_definitions.lib"
+				AdditionalDependencies="opengl32.lib glu32.lib legacy_stdio_definitions.lib"
 				OutputFile="$(SolutionDir)\bin\$(ConfigurationName)\MUAutoClicker.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories=".\UI"
@@ -263,11 +263,312 @@
 				</FileConfiguration>
 			</File>
 		</Filter>
+			<Filter
+				Name="UI"
+				>
+					<File RelativePath=".\UI\GlyphContext.cpp" />
+					<File RelativePath=".\UI\Container.cpp" />
+					<File RelativePath=".\UI\Gui.cpp" />
+					<File RelativePath=".\UI\ThemeManager.cpp" />
+					<File RelativePath=".\UI\Font.cpp" />
+					<File RelativePath=".\UI\Graphics.cpp" />
+					<File RelativePath=".\UI\Component.cpp" />
+					<File RelativePath=".\UI\CompoundComponent.cpp" />
+					<File RelativePath=".\UI\Icon.cpp" />
+					<File RelativePath=".\UI\SelectionManager.cpp" />
+					<File RelativePath=".\UI\FocusManager.cpp" />
+					<Filter
+						Name="layout"
+						>
+							<File RelativePath=".\UI\layout\BorderLayout.cpp" />
+							<File RelativePath=".\UI\layout\FlowLayout.cpp" />
+							<File RelativePath=".\UI\layout\GridLayout.cpp" />
+							<File RelativePath=".\UI\layout\LayoutManager.cpp" />
+							<File RelativePath=".\UI\layout\PopupLayout.cpp" />
+						</Filter>
+					<Filter
+						Name="border"
+						>
+							<File RelativePath=".\UI\border\BevelBorder.cpp" />
+							<File RelativePath=".\UI\border\Border.cpp" />
+							<File RelativePath=".\UI\border\LineBorder.cpp" />
+						</Filter>
+					<Filter
+						Name="util"
+						>
+							<File RelativePath=".\UI\util\ButtonGroup.cpp" />
+							<File RelativePath=".\UI\util\Color.cpp" />
+							<File RelativePath=".\UI\util\Dimension.cpp" />
+							<File RelativePath=".\UI\util\DisplayList.cpp" />
+							<File RelativePath=".\UI\util\GradientColor.cpp" />
+							<File RelativePath=".\UI\util\Insets.cpp" />
+							<File RelativePath=".\UI\util\Interpolator.cpp" />
+							<File RelativePath=".\UI\util\LinearTimeInterpolator.cpp" />
+							<File RelativePath=".\UI\util\Observable.cpp" />
+							<File RelativePath=".\UI\util\Observer.cpp" />
+							<File RelativePath=".\UI\util\Paint.cpp" />
+							<File RelativePath=".\UI\util\Point.cpp" />
+							<File RelativePath=".\UI\util\RangeHolder.cpp" />
+							<File RelativePath=".\UI\util\Rectangle.cpp" />
+							<File RelativePath=".\UI\util\TimeBasedInterpolator.cpp" />
+							<File RelativePath=".\UI\util\constants\Orientation.cpp" />
+						</Filter>
+					<Filter
+						Name="component"
+						>
+							<File RelativePath=".\UI\component\AbstractButton.cpp" />
+							<File RelativePath=".\UI\component\Button.cpp" />
+							<File RelativePath=".\UI\component\CheckBox.cpp" />
+							<File RelativePath=".\UI\component\Dialog.cpp" />
+							<File RelativePath=".\UI\component\Frame.cpp" />
+							<File RelativePath=".\UI\component\GLCanvas.cpp" />
+							<File RelativePath=".\UI\component\Knob.cpp" />
+							<File RelativePath=".\UI\component\Label.cpp" />
+							<File RelativePath=".\UI\component\Menu.cpp" />
+							<File RelativePath=".\UI\component\MenuBar.cpp" />
+							<File RelativePath=".\UI\component\MenuItem.cpp" />
+							<File RelativePath=".\UI\component\Panel.cpp" />
+							<File RelativePath=".\UI\component\PopupMenu.cpp" />
+							<File RelativePath=".\UI\component\ProgressBar.cpp" />
+							<File RelativePath=".\UI\component\RadioButton.cpp" />
+							<File RelativePath=".\UI\component\ScrollPane.cpp" />
+							<File RelativePath=".\UI\component\Scrollbar.cpp" />
+							<File RelativePath=".\UI\component\Scroller.cpp" />
+							<File RelativePath=".\UI\component\Slider.cpp" />
+							<File RelativePath=".\UI\component\TextField.cpp" />
+							<File RelativePath=".\UI\component\TitleBar.cpp" />
+							<File RelativePath=".\UI\component\ToggleButton.cpp" />
+							<File RelativePath=".\UI\component\Window.cpp" />
+						</Filter>
+					<Filter
+						Name="theme"
+						>
+							<File RelativePath=".\UI\theme\BasicTheme.cpp" />
+							<File RelativePath=".\UI\theme\DefaultTheme.cpp" />
+							<File RelativePath=".\UI\theme\RangeUtil.cpp" />
+							<File RelativePath=".\UI\theme\TextUtil.cpp" />
+							<File RelativePath=".\UI\theme\Theme.cpp" />
+							<File RelativePath=".\UI\theme\ThemeComponent.cpp" />
+							<Filter Name="Default">
+								<File RelativePath=".\UI\theme\Default\ButtonTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\CheckBoxTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\ComponentTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\DefaultScheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\DialogTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\FrameTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\GLCanvasTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\LabelTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\MenuBarTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\MenuItemTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\MenuTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\MetalScheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\PopupMenuTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\ProgressBarTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\RadioButtonTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\Scheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\ScrollerTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\ScrollbarTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\SliderTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\TextFieldTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\TitleBarTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\ToggleButtonTheme.cpp" />
+								<File RelativePath=".\UI\theme\Default\Util.cpp" />
+							</Filter>
+							<Filter Name="basic">
+								<File RelativePath=".\UI\theme\basic\ButtonTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\CheckBoxTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\ComponentTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\DialogTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\KnobTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\LabelTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\MenuBarTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\MenuItemTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\MenuTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\PopupMenuTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\RadioButtonTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\SliderTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\TextFieldTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\TitleBarTheme.cpp" />
+								<File RelativePath=".\UI\theme\basic\ToggleButtonTheme.cpp" />
+							</Filter>
+						</Filter>
+					<Filter
+						Name="event"
+						>
+							<File RelativePath=".\UI\event\ChangeEvent.cpp" />
+							<File RelativePath=".\UI\event\ChangeListener.cpp" />
+							<File RelativePath=".\UI\event\Event.cpp" />
+							<File RelativePath=".\UI\event\EventListener.cpp" />
+							<File RelativePath=".\UI\event\FocusEvent.cpp" />
+							<File RelativePath=".\UI\event\FocusListener.cpp" />
+							<File RelativePath=".\UI\event\ItemEvent.cpp" />
+							<File RelativePath=".\UI\event\ItemListener.cpp" />
+							<File RelativePath=".\UI\event\KeyEvent.cpp" />
+							<File RelativePath=".\UI\event\KeyListener.cpp" />
+							<File RelativePath=".\UI\event\MouseEvent.cpp" />
+							<File RelativePath=".\UI\event\MouseListener.cpp" />
+							<File RelativePath=".\UI\event\PropertyEvent.cpp" />
+							<File RelativePath=".\UI\event\PropertyListener.cpp" />
+							<File RelativePath=".\UI\event\WindowEvent.cpp" />
+							<File RelativePath=".\UI\event\WindowListener.cpp" />
+						</Filter>
+			</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<Filter
+				Name="UI"
+				>
+					<File RelativePath=".\UI\GlyphContext.h" />
+					<File RelativePath=".\UI\Component.h" />
+					<File RelativePath=".\UI\SelectionManager.h" />
+					<File RelativePath=".\UI\Pointers.h" />
+					<File RelativePath=".\UI\Container.h" />
+					<File RelativePath=".\UI\Gui.h" />
+					<File RelativePath=".\UI\Config.h" />
+					<File RelativePath=".\UI\Icon.h" />
+					<File RelativePath=".\UI\Font.h" />
+					<File RelativePath=".\UI\Graphics.h" />
+					<File RelativePath=".\UI\ThemeManager.h" />
+					<File RelativePath=".\UI\FocusManager.h" />
+					<Filter
+						Name="layout"
+						>
+							<File RelativePath=".\UI\layout\BorderLayout.h" />
+							<File RelativePath=".\UI\layout\FlowLayout.h" />
+							<File RelativePath=".\UI\layout\GridLayout.h" />
+							<File RelativePath=".\UI\layout\LayoutManager.h" />
+							<File RelativePath=".\UI\layout\PopupLayout.h" />
+						</Filter>
+					<Filter
+						Name="border"
+						>
+							<File RelativePath=".\UI\border\BevelBorder.h" />
+							<File RelativePath=".\UI\border\Border.h" />
+							<File RelativePath=".\UI\border\LineBorder.h" />
+						</Filter>
+					<Filter
+						Name="util"
+						>
+							<File RelativePath=".\UI\util\GradientColor.h" />
+							<File RelativePath=".\UI\util\TimeBasedInterpolator.h" />
+							<File RelativePath=".\UI\util\Dimension.h" />
+							<File RelativePath=".\UI\util\Observer.h" />
+							<File RelativePath=".\UI\util\DisplayList.h" />
+							<File RelativePath=".\UI\util\constants\Orientation.h" />
+							<File RelativePath=".\UI\util\Insets.h" />
+							<File RelativePath=".\UI\util\ButtonGroup.h" />
+							<File RelativePath=".\UI\util\Rectangle.h" />
+							<File RelativePath=".\UI\util\Point.h" />
+							<File RelativePath=".\UI\util\LinearTimeInterpolator.h" />
+							<File RelativePath=".\UI\util\RangeHolder.h" />
+							<File RelativePath=".\UI\util\Color.h" />
+							<File RelativePath=".\UI\util\Interpolator.h" />
+							<File RelativePath=".\UI\util\Paint.h" />
+							<File RelativePath=".\UI\util\Observable.h" />
+						</Filter>
+					<Filter
+						Name="component"
+						>
+							<File RelativePath=".\UI\component\Label.h" />
+							<File RelativePath=".\UI\component\Frame.h" />
+							<File RelativePath=".\UI\component\Slider.h" />
+							<File RelativePath=".\UI\component\ScrollPane.h" />
+							<File RelativePath=".\UI\component\PopupMenu.h" />
+							<File RelativePath=".\UI\component\CheckBox.h" />
+							<File RelativePath=".\UI\component\Scrollbar.h" />
+							<File RelativePath=".\UI\component\Knob.h" />
+							<File RelativePath=".\UI\component\TitleBar.h" />
+							<File RelativePath=".\UI\component\MenuBar.h" />
+							<File RelativePath=".\UI\component\ProgressBar.h" />
+							<File RelativePath=".\UI\component\ToggleButton.h" />
+							<File RelativePath=".\UI\component\RadioButton.h" />
+							<File RelativePath=".\UI\component\Menu.h" />
+							<File RelativePath=".\UI\component\TextField.h" />
+							<File RelativePath=".\UI\component\AbstractButton.h" />
+							<File RelativePath=".\UI\component\Window.h" />
+							<File RelativePath=".\UI\component\Dialog.h" />
+							<File RelativePath=".\UI\component\MenuItem.h" />
+							<File RelativePath=".\UI\component\GLCanvas.h" />
+							<File RelativePath=".\UI\component\Button.h" />
+							<File RelativePath=".\UI\component\Panel.h" />
+							<File RelativePath=".\UI\component\Scroller.h" />
+						</Filter>
+					<Filter
+						Name="theme"
+						>
+							<File RelativePath=".\UI\theme\Theme.h" />
+							<File RelativePath=".\UI\theme\RangeUtil.h" />
+							<File RelativePath=".\UI\theme\DefaultTheme.h" />
+							<File RelativePath=".\UI\theme\TextUtil.h" />
+							<File RelativePath=".\UI\theme\ThemeComponent.h" />
+							<File RelativePath=".\UI\theme\BasicTheme.h" />
+							<Filter Name="Default">
+								<File RelativePath=".\UI\theme\Default\MenuTheme.h" />
+								<File RelativePath=".\UI\theme\Default\CheckBoxTheme.h" />
+								<File RelativePath=".\UI\theme\Default\MetalScheme.h" />
+								<File RelativePath=".\UI\theme\Default\DefaultScheme.h" />
+								<File RelativePath=".\UI\theme\Default\ButtonTheme.h" />
+								<File RelativePath=".\UI\theme\Default\TextFieldTheme.h" />
+								<File RelativePath=".\UI\theme\Default\RadioButtonTheme.h" />
+								<File RelativePath=".\UI\theme\Default\DialogTheme.h" />
+								<File RelativePath=".\UI\theme\Default\ToggleButtonTheme.h" />
+								<File RelativePath=".\UI\theme\Default\ScrollbarTheme.h" />
+								<File RelativePath=".\UI\theme\Default\MenuItemTheme.h" />
+								<File RelativePath=".\UI\theme\Default\PopupMenuTheme.h" />
+								<File RelativePath=".\UI\theme\Default\LabelTheme.h" />
+								<File RelativePath=".\UI\theme\Default\Util.h" />
+								<File RelativePath=".\UI\theme\Default\ComponentTheme.h" />
+								<File RelativePath=".\UI\theme\Default\ProgressBarTheme.h" />
+								<File RelativePath=".\UI\theme\Default\Scheme.h" />
+								<File RelativePath=".\UI\theme\Default\TitleBarTheme.h" />
+								<File RelativePath=".\UI\theme\Default\GLCanvasTheme.h" />
+								<File RelativePath=".\UI\theme\Default\FrameTheme.h" />
+								<File RelativePath=".\UI\theme\Default\SliderTheme.h" />
+								<File RelativePath=".\UI\theme\Default\ScrollerTheme.h" />
+								<File RelativePath=".\UI\theme\Default\MenuBarTheme.h" />
+							</Filter>
+							<Filter Name="basic">
+								<File RelativePath=".\UI\theme\basic\MenuTheme.h" />
+								<File RelativePath=".\UI\theme\basic\CheckBoxTheme.h" />
+								<File RelativePath=".\UI\theme\basic\ButtonTheme.h" />
+								<File RelativePath=".\UI\theme\basic\TextFieldTheme.h" />
+								<File RelativePath=".\UI\theme\basic\RadioButtonTheme.h" />
+								<File RelativePath=".\UI\theme\basic\KnobTheme.h" />
+								<File RelativePath=".\UI\theme\basic\DialogTheme.h" />
+								<File RelativePath=".\UI\theme\basic\ToggleButtonTheme.h" />
+								<File RelativePath=".\UI\theme\basic\MenuItemTheme.h" />
+								<File RelativePath=".\UI\theme\basic\PopupMenuTheme.h" />
+								<File RelativePath=".\UI\theme\basic\LabelTheme.h" />
+								<File RelativePath=".\UI\theme\basic\ComponentTheme.h" />
+								<File RelativePath=".\UI\theme\basic\TitleBarTheme.h" />
+								<File RelativePath=".\UI\theme\basic\SliderTheme.h" />
+								<File RelativePath=".\UI\theme\basic\MenuBarTheme.h" />
+							</Filter>
+						</Filter>
+					<Filter
+						Name="event"
+						>
+							<File RelativePath=".\UI\event\EventListener.h" />
+							<File RelativePath=".\UI\event\FocusListener.h" />
+							<File RelativePath=".\UI\event\PropertyEvent.h" />
+							<File RelativePath=".\UI\event\ItemListener.h" />
+							<File RelativePath=".\UI\event\WindowEvent.h" />
+							<File RelativePath=".\UI\event\ItemEvent.h" />
+							<File RelativePath=".\UI\event\PropertyListener.h" />
+							<File RelativePath=".\UI\event\Event.h" />
+							<File RelativePath=".\UI\event\FocusEvent.h" />
+							<File RelativePath=".\UI\event\WindowListener.h" />
+							<File RelativePath=".\UI\event\KeyListener.h" />
+							<File RelativePath=".\UI\event\KeyEvent.h" />
+							<File RelativePath=".\UI\event\MouseListener.h" />
+							<File RelativePath=".\UI\event\ChangeListener.h" />
+							<File RelativePath=".\UI\event\MouseEvent.h" />
+							<File RelativePath=".\UI\event\ChangeEvent.h" />
+						</Filter>
+			</Filter>
 			<File
 				RelativePath=".\AdvSettingsDialog.h"
 				>
