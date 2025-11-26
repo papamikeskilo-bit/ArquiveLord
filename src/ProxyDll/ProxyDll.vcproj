@@ -32,9 +32,6 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
 				Name="VCMIDLTool"
 				PreprocessorDefinitions="_DEBUG"
 				MkTypLibCompatible="false"
@@ -129,9 +126,6 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
 				Name="VCMIDLTool"
 				PreprocessorDefinitions="NDEBUG"
 				MkTypLibCompatible="false"
@@ -153,7 +147,7 @@
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;"
-				RuntimeLibrary="0"
+                                RuntimeLibrary="3"
 				RuntimeTypeInfo="false"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderFile="$(IntDir)\$(TargetName)dll.pch"

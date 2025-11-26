@@ -56,7 +56,8 @@ int CCharInfoFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& context)
 		CGameServerHelloPacket& pktHelo = (CGameServerHelloPacket&)pkt;
 		m_wPlayerId = pktHelo.GetPlayerId();
 
-		CServerMessagePacket pkt2(">> %s ", CT2A(__SOFTWARE_VERSION_ABOUT));
+                CW2AEX<128> aboutVersion(__SOFTWARE_VERSION_ABOUT);
+                CServerMessagePacket pkt2(">> %s ", static_cast<LPCSTR>(aboutVersion));
 		CServerMessagePacket pkt3(">> %s ", __SOFTWARE_COPYRIGHT);
 
 		GetProxy()->recv_direct(pkt2);
@@ -94,11 +95,11 @@ int CCharInfoFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& context)
 	{
 		DWORD ver[] = {__SOFTWARE_VERSION};
 
-		CStringA strMsg;
-		strMsg.Format(" - MU AutoClicker V%d.%04d - ", ver[0], ver[1]);
+                CStringA strMsg;
+                strMsg.Format(" - MU AutoClicker V%d.%04d - ", ver[0], ver[1]);
 
-		CGMMessagePacket pkt2(strMsg);
-		CGMMessagePacket pkt3(" - " __SOFTWARE_COPYRIGHT " - ");
+                CGMMessagePacket pkt2(strMsg);
+                CGMMessagePacket pkt3(" - " __SOFTWARE_COPYRIGHT " - ");
 
 		GetProxy()->recv_direct(pkt2);
 		GetProxy()->recv_direct(pkt3);

@@ -31,9 +31,6 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
 				Name="VCMIDLTool"
 			/>
 			<Tool
@@ -112,9 +109,6 @@
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
 				Name="VCMIDLTool"
 			/>
 			<Tool
@@ -125,7 +119,7 @@
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="ui2"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
-				RuntimeLibrary="0"
+                                RuntimeLibrary="3"
 				BufferSecurityCheck="false"
 				EnableFunctionLevelLinking="true"
 				RuntimeTypeInfo="false"
