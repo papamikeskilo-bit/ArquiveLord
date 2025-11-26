@@ -6,7 +6,13 @@
 #define _CRT_SECURE_NO_WARNING
 
 #include <intrin.h>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
+
+#if defined(_MSC_VER) && _MSC_VER < 1900
 #pragma intrinsic(memcpy,memset)
+#endif
 
 
 //#define WINSOCK_UTIL_CLASS CWinsockUtil

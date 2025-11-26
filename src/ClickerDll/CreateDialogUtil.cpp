@@ -12,17 +12,19 @@ int WINAPI CCreateDialogUtil::MyResReadCallback(const RESOURCEHEADER* pResHdr, L
 {
 	RESCALLBACKPARAM* pParam = (RESCALLBACKPARAM*)lParam; 
 
-	if (pResHdr->pszType == MAKEINTRESOURCEA(5) && (WORD)pResHdr->pszName == (WORD)pParam->uiIdd)
-	{
-		DLGTEMPLATE* pTemplate = (DLGTEMPLATE*)new BYTE[pResHdr->dwDataSize];
-		memcpy(pTemplate, lpData, pResHdr->dwDataSize);
-		
-		*pParam->ppDlgTemplate = pTemplate;
-	}
-	else if (pResHdr->pszType == MAKEINTRESOURCEA(240) && (WORD)pResHdr->pszName == (WORD)pParam->uiIdd)
-	{
-		BYTE* pInitData = new BYTE[pResHdr->dwDataSize];
-		memcpy(pInitData, lpData, pResHdr->dwDataSize);
+        const ULONG_PTR resName = reinterpret_cast<ULONG_PTR>(pResHdr->pszName);
+
+        if (pResHdr->pszType == MAKEINTRESOURCEA(5) && resName == static_cast<ULONG_PTR>(pParam->uiIdd))
+        {
+                DLGTEMPLATE* pTemplate = (DLGTEMPLATE*)new BYTE[pResHdr->dwDataSize];
+                memcpy(pTemplate, lpData, pResHdr->dwDataSize);
+
+                *pParam->ppDlgTemplate = pTemplate;
+        }
+        else if (pResHdr->pszType == MAKEINTRESOURCEA(240) && resName == static_cast<ULONG_PTR>(pParam->uiIdd))
+        {
+                BYTE* pInitData = new BYTE[pResHdr->dwDataSize];
+                memcpy(pInitData, lpData, pResHdr->dwDataSize);
 
 		*pParam->ppInitData = pInitData;
 	}

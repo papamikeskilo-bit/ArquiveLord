@@ -25,16 +25,10 @@
 			CharacterSet="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -97,9 +91,6 @@
 			<Tool
 				Name="VCAppVerifierTool"
 			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
@@ -112,16 +103,10 @@
 			EnableManagedIncrementalBuild="0"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -134,7 +119,8 @@
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="ui2"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
-				RuntimeLibrary="0"
+                                RuntimeLibrary="2"
+				BasicRuntimeChecks="0"
 				BufferSecurityCheck="false"
 				EnableFunctionLevelLinking="true"
 				RuntimeTypeInfo="false"
@@ -197,9 +183,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
 	</Configurations>
