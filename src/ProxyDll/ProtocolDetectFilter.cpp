@@ -26,51 +26,39 @@ bool CProtocolDetectFilter::m_fVersionDetected = false;
 /**
  * \brief 
  */
-CProtocolDetectFilter::CProtocolDetectFilter(CProxy* pProxy) 
-	: CPacketFilter(pProxy) 
+CProtocolDetectFilter::CProtocolDetectFilter(CProxy* pProxy)
+        : CPacketFilter(pProxy)
 {
-	m_iState = CProtocolDetectFilter::m_fVersionDetected ? P_DETECT_STATE_APPLY_VERSION : P_DETECT_STATE_INIT;
-	m_ulVersion = 0;
-	m_dwGameStartTS = 0;
-	m_dwTrialCheckTS = GetTickCount();
+        m_iState = P_DETECT_STATE_APPLY_VERSION;
+        m_ulVersion = PTYPE_ENG | GTYPE_S2;
+        m_dwGameStartTS = 0;
+        m_dwTrialCheckTS = GetTickCount();
 
-	m_dwTrialTime = 7*60*1000;
-	m_dwCheckTime = 10*1000;
+        m_dwTrialTime = 7*60*1000;
+        m_dwCheckTime = 10*1000;
 
 
-	if (!CProtocolDetectFilter::m_fVersionDetected)
-	{
-		DWORD dwType = PTYPE_ENG;
-		DWORD dwGType = 1;
+        extern TCHAR g_szRoot[_MAX_PATH + 1];
 
-		extern TCHAR g_szRoot[_MAX_PATH + 1];
+        CProtocolSettings& sett = CProtocolSettings(CT2CA(g_szRoot));
 
-		CProtocolSettings& sett = CProtocolSettings(CT2CA(g_szRoot));
+        if (sett.Load())
+        {
+                sett.data.dwClientType = 0;
+                sett.data.dwProtocolType = PTYPE_ENG;
+        }
 
-		if (sett.Load())
-		{
-			dwType = sett.data.dwProtocolType;
-			dwGType = sett.data.dwClientType;
-		}
+        CPacketType::SetVersion(m_ulVersion);
+        CPacketType::SetProtocol(m_ulVersion);
+        CPacketType::SetFeatures(sett.data.dwFlags);
 
-		DWORD ulVersion = dwType | ((dwGType == 1) ? GTYPE_S3 : GTYPE_S4);
+        ULONG ulGameVersion = 102;
 
-		CPacketType::SetVersion(ulVersion);
-		CPacketType::SetProtocol(ulVersion);
-		CPacketType::SetFeatures(sett.data.dwFlags);
-
-		ULONG ulGameVersion = ((ulVersion & GTYPE_S3) != GTYPE_S3) ? 105 : 104;
-
-		if (CProxyClickerModule::GetInstance()->m_pLoader)
-		{
-			CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_VERSION, _MODULE_LOADER_TARGET_GUI, &ulGameVersion, 0);
-			CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_FEATURES, _MODULE_LOADER_TARGET_GUI, &sett.data.dwFlags, 0);
-		}
-	}
-	else
-	{
-		m_ulVersion = CPacketType::GetVersion();
-	}
+        if (CProxyClickerModule::GetInstance()->m_pLoader)
+        {
+                CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_VERSION, _MODULE_LOADER_TARGET_GUI, &ulGameVersion, 0);
+                CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_FEATURES, _MODULE_LOADER_TARGET_GUI, &sett.data.dwFlags, 0);
+        }
 }
 
 
@@ -131,37 +119,41 @@ int CProtocolDetectFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& contex
  */
 int CProtocolDetectFilter::FilterSendPacket(CPacket& pkt, CFilterContext&)
 {
-	if (P_DETECT_STATE_READY == m_iState)
-		return 0;
+        if (pkt.GetPktClass() == 0xC3)
+        {
+                if (CEncDec::DecryptC3asServer(pkt))
+                {
+                        int len = pkt.GetDecryptedLen();
+                        BYTE* buf = pkt.GetDecryptedPacket();
 
-	
-	if (P_DETECT_STATE_INIT == m_iState)
-	{
-		if (pkt.GetPktClass() == 0xC3)
-		{
-			CPacket pktCopy = pkt;
-			CEncDec::DecryptC3asServer(pktCopy);
+                        if (buf && len > 4 && buf[3] == 0xF1 && buf[4] == 0x01)
+                        {
+                                BYTE* pVersion = 0;
 
-			int len = pktCopy.GetDecryptedLen();
-			BYTE* buf = pktCopy.GetDecryptedPacket();
+                                if (len > 52)
+                                        pVersion = buf + 39;
+                                else if (buf[1] == 0x34)
+                                        pVersion = buf + 31;
+                                else if (len > 34)
+                                        pVersion = buf + 29;
 
-			if (buf && len > 3 && buf[3] == 0xF1) // Client auth packet
-			{
-				CEncDec::DecXor32(buf + 4, 3, len - 4);
+                                if (pVersion)
+                                {
+                                        pVersion[0] = '1';
+                                        pVersion[1] = '0';
+                                        pVersion[2] = '2';
+                                        pVersion[3] = '0';
+                                        pVersion[4] = '3';
+                                }
 
-				if (buf[4] != 0x01)
-				{
-					CEncDec::SetExtraCrypt();
-					CDebugOut::PrintInfo("- Extra XOR encryption enabled.");
-				}
+                                CEncDec::EncryptC3asClient(pkt);
+                        }
+                }
+        }
 
-				m_iState = P_DETECT_STATE_PTYPE;
-			}
-		}
-	}
-	
-	FinalizeVersionDetect();
-	return 0;
+        m_iState = P_DETECT_STATE_READY;
+        FinalizeVersionDetect();
+        return 0;
 }
 
 
