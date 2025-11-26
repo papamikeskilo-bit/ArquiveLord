@@ -24,16 +24,10 @@
 			CharacterSet="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -95,9 +89,6 @@
 			<Tool
 				Name="VCAppVerifierTool"
 			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
@@ -108,16 +99,10 @@
 			WholeProgramOptimization="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -128,7 +113,8 @@
 				EnableIntrinsicFunctions="true"
 				AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared; .\"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;_PSDK_BLD"
-				RuntimeLibrary="0"
+                                RuntimeLibrary="2"
+				BasicRuntimeChecks="0"
 				EnableFunctionLevelLinking="true"
 				RuntimeTypeInfo="false"
 				UsePrecompiledHeader="0"
@@ -181,10 +167,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="cd $(TargetDir)&#x0D;&#x0A;packer.exe /packall&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
