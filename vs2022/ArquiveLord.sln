@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4139B32B-ADBA-4902-98EC-5ECC8FE6BE42}") = "Loader", "Loader\Loader.vcxproj", "{1B0F85FB-C203-44EB-BA7D-1B3F5992D6FC}"
+EndProject
+Project("{4139B32B-ADBA-4902-98EC-5ECC8FE6BE42}") = "Core", "Core\Core.vcxproj", "{B5D72D46-1638-463D-83A1-7AF11731EA4B}"
+EndProject
+Project("{4139B32B-ADBA-4902-98EC-5ECC8FE6BE42}") = "UI", "UI\UI.vcxproj", "{5BC4C998-3A56-4DD1-8372-B0CBAF2BE47F}"
+EndProject
+Global
+GlobalSection(SolutionConfigurationPlatforms) = preSolution
+Release|Win32 = Release|Win32
+Debug|Win32 = Debug|Win32
+EndGlobalSection
+GlobalSection(ProjectConfigurationPlatforms) = postSolution
+{1B0F85FB-C203-44EB-BA7D-1B3F5992D6FC}.Debug|Win32.ActiveCfg = Debug|Win32
+{1B0F85FB-C203-44EB-BA7D-1B3F5992D6FC}.Debug|Win32.Build.0 = Debug|Win32
+{1B0F85FB-C203-44EB-BA7D-1B3F5992D6FC}.Release|Win32.ActiveCfg = Release|Win32
+{1B0F85FB-C203-44EB-BA7D-1B3F5992D6FC}.Release|Win32.Build.0 = Release|Win32
+{B5D72D46-1638-463D-83A1-7AF11731EA4B}.Debug|Win32.ActiveCfg = Debug|Win32
+{B5D72D46-1638-463D-83A1-7AF11731EA4B}.Debug|Win32.Build.0 = Debug|Win32
+{B5D72D46-1638-463D-83A1-7AF11731EA4B}.Release|Win32.ActiveCfg = Release|Win32
+{B5D72D46-1638-463D-83A1-7AF11731EA4B}.Release|Win32.Build.0 = Release|Win32
+{5BC4C998-3A56-4DD1-8372-B0CBAF2BE47F}.Debug|Win32.ActiveCfg = Debug|Win32
+{5BC4C998-3A56-4DD1-8372-B0CBAF2BE47F}.Debug|Win32.Build.0 = Debug|Win32
+{5BC4C998-3A56-4DD1-8372-B0CBAF2BE47F}.Release|Win32.ActiveCfg = Release|Win32
+{5BC4C998-3A56-4DD1-8372-B0CBAF2BE47F}.Release|Win32.Build.0 = Release|Win32
+EndGlobalSection
+GlobalSection(SolutionProperties) = preSolution
+HideSolutionNode = FALSE
+EndGlobalSection
+EndGlobal
