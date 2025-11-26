@@ -21,56 +21,137 @@
  */
 bool CProtocolDetectFilter::m_fVersionDetected = false;
 
+namespace
+{
+        DWORD MapClientTypeToGType(DWORD dwClientType)
+        {
+                switch (dwClientType)
+                {
+                case 0:
+                        return GTYPE_S2;
+                case 1:
+                        return GTYPE_S3;
+                case 2:
+                        return GTYPE_S4;
+                case 4:
+                case 6:
+                case 62:
+                        return GTYPE_S62;
+                default:
+                        return 0;
+                }
+        }
+
+        ULONG MapGTypeToGameVersion(DWORD dwGType)
+        {
+                switch (dwGType)
+                {
+                case GTYPE_S2:
+                        return 102;
+                case GTYPE_S3:
+                        return 104;
+                case GTYPE_S4:
+                        return 105;
+                case GTYPE_S62:
+                        return 106;
+                default:
+                        return 105;
+                }
+        }
+
+        void LoadIniProtocolOverrides(const char* pszRoot, DWORD& dwType, DWORD& dwClientType, DWORD& dwFlags, bool& fHasVersion)
+        {
+                if (!pszRoot || pszRoot[0] == 0)
+                        return;
+
+                char szFile[_MAX_PATH + 1] = {0};
+                strcpy_s(szFile, _MAX_PATH, pszRoot);
+                strcat_s(szFile, _MAX_PATH, "config.ini");
+
+                DWORD dwTemp = GetPrivateProfileIntA("protocol", "ProtocolType", 0xFFFFFFFF, szFile);
+
+                if (dwTemp != 0xFFFFFFFF)
+                {
+                        dwType = dwTemp;
+                        fHasVersion = true;
+                }
+
+                dwTemp = GetPrivateProfileIntA("protocol", "ClientType", 0xFFFFFFFF, szFile);
+
+                if (dwTemp != 0xFFFFFFFF)
+                {
+                        dwClientType = dwTemp;
+                        fHasVersion = true;
+                }
+
+                dwFlags = GetPrivateProfileIntA("protocol", "FeatureFlags", dwFlags, szFile);
+        }
+}
+
 
 
 /**
  * \brief 
  */
-CProtocolDetectFilter::CProtocolDetectFilter(CProxy* pProxy) 
-	: CPacketFilter(pProxy) 
+CProtocolDetectFilter::CProtocolDetectFilter(CProxy* pProxy)
+        : CPacketFilter(pProxy)
 {
-	m_iState = CProtocolDetectFilter::m_fVersionDetected ? P_DETECT_STATE_APPLY_VERSION : P_DETECT_STATE_INIT;
-	m_ulVersion = 0;
-	m_dwGameStartTS = 0;
-	m_dwTrialCheckTS = GetTickCount();
+        m_iState = CProtocolDetectFilter::m_fVersionDetected ? P_DETECT_STATE_APPLY_VERSION : P_DETECT_STATE_INIT;
+        m_ulVersion = CProtocolDetectFilter::m_fVersionDetected ? CPacketType::GetVersion() : 0;
+        m_dwGameStartTS = 0;
+        m_dwTrialCheckTS = GetTickCount();
 
-	m_dwTrialTime = 7*60*1000;
-	m_dwCheckTime = 10*1000;
+        m_dwTrialTime = 7*60*1000;
+        m_dwCheckTime = 10*1000;
 
+        DWORD dwType = PTYPE_ENG;
+        DWORD dwClientType = 1;
+        DWORD dwFlags = 0;
+        bool fHasConfiguredVersion = (m_ulVersion != 0);
 
-	if (!CProtocolDetectFilter::m_fVersionDetected)
-	{
-		DWORD dwType = PTYPE_ENG;
-		DWORD dwGType = 1;
+        extern TCHAR g_szRoot[_MAX_PATH + 1];
 
-		extern TCHAR g_szRoot[_MAX_PATH + 1];
+        CProtocolSettings& sett = CProtocolSettings(CT2CA(g_szRoot));
 
-		CProtocolSettings& sett = CProtocolSettings(CT2CA(g_szRoot));
+        if (sett.Load())
+        {
+                dwFlags = sett.data.dwFlags;
 
-		if (sett.Load())
-		{
-			dwType = sett.data.dwProtocolType;
-			dwGType = sett.data.dwClientType;
-		}
+                if (!fHasConfiguredVersion)
+                {
+                        dwType = sett.data.dwProtocolType;
+                        dwClientType = sett.data.dwClientType;
+                        fHasConfiguredVersion = (dwType != 0);
+                }
+        }
 
-		DWORD ulVersion = dwType | ((dwGType == 1) ? GTYPE_S3 : GTYPE_S4);
+        LoadIniProtocolOverrides(CT2CA(g_szRoot), dwType, dwClientType, dwFlags, fHasConfiguredVersion);
 
-		CPacketType::SetVersion(ulVersion);
-		CPacketType::SetProtocol(ulVersion);
-		CPacketType::SetFeatures(sett.data.dwFlags);
+        DWORD dwGType = MapClientTypeToGType(dwClientType);
 
-		ULONG ulGameVersion = ((ulVersion & GTYPE_S3) != GTYPE_S3) ? 105 : 104;
+        if (!fHasConfiguredVersion && dwGType != 0 && dwType != 0)
+        {
+                m_ulVersion = dwType | dwGType;
+                fHasConfiguredVersion = true;
+        }
+        else if (fHasConfiguredVersion && m_ulVersion == 0 && dwGType != 0 && dwType != 0)
+        {
+                m_ulVersion = dwType | dwGType;
+        }
 
-		if (CProxyClickerModule::GetInstance()->m_pLoader)
-		{
-			CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_VERSION, _MODULE_LOADER_TARGET_GUI, &ulGameVersion, 0);
-			CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_FEATURES, _MODULE_LOADER_TARGET_GUI, &sett.data.dwFlags, 0);
-		}
-	}
-	else
-	{
-		m_ulVersion = CPacketType::GetVersion();
-	}
+        CPacketType::SetFeatures(dwFlags);
+
+        if (CProxyClickerModule::GetInstance()->m_pLoader)
+                CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_FEATURES, _MODULE_LOADER_TARGET_GUI, &dwFlags, 0);
+
+        if (fHasConfiguredVersion && m_ulVersion != 0)
+        {
+                CProtocolDetectFilter::m_fVersionDetected = true;
+                m_iState = P_DETECT_STATE_APPLY_VERSION;
+
+                CPacketType::SetVersion(m_ulVersion);
+                CPacketType::SetProtocol(m_ulVersion);
+        }
 }
 
 
@@ -272,22 +353,31 @@ bool CProtocolDetectFilter::GetParam(const char* pszParam, void* pData)
  */
 bool CProtocolDetectFilter::SetParam(const char* pszParam, void* pData)
 { 
-	if (_stricmp(pszParam, "ptype") == 0)
-	{
-		DWORD dwType = *((DWORD*)pData);
-		DWORD dwGType = (m_ulVersion & 0xFF000000) >> 24;
+        if (_stricmp(pszParam, "ptype") == 0)
+        {
+                DWORD dwType = *((DWORD*)pData);
+                DWORD dwGType = m_ulVersion & 0xFF000000;
 
-		m_ulVersion = dwType | ((dwGType == 1) ? GTYPE_S3 : GTYPE_S4);
+                if (dwGType == 0)
+                        dwGType = MapClientTypeToGType(1);
 
-		ApplyVersion();
-		return true;
-	}
-	else if (_stricmp(pszParam, "ctype") == 0)
-	{
-		DWORD dwType = m_ulVersion & 0x0000FFFF;
-		DWORD dwGType = *((DWORD*)pData);
+                m_ulVersion = dwType | dwGType;
 
-		m_ulVersion = dwType | ((dwGType == 1) ? GTYPE_S3 : GTYPE_S4);
+                ApplyVersion();
+                return true;
+        }
+        else if (_stricmp(pszParam, "ctype") == 0)
+        {
+                DWORD dwType = m_ulVersion & 0x0000FFFF;
+                DWORD dwGType = MapClientTypeToGType(*((DWORD*)pData));
+
+                if (dwGType == 0)
+                        dwGType = m_ulVersion & 0xFF000000;
+
+                if (dwGType == 0)
+                        dwGType = MapClientTypeToGType(1);
+
+                m_ulVersion = dwType | dwGType;
 
 		ApplyVersion();
 		return true;
@@ -311,10 +401,13 @@ bool CProtocolDetectFilter::SetParam(const char* pszParam, void* pData)
  */
 void CProtocolDetectFilter::ApplyVersion()
 {
-	ULONG ulGameVersion = ((m_ulVersion & GTYPE_S3) != GTYPE_S3) ? 105 : 104;
+        if (m_ulVersion == 0)
+                return;
 
-	if (CProxyClickerModule::GetInstance()->m_pLoader)
-		CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_VERSION, _MODULE_LOADER_TARGET_GUI, &ulGameVersion, 0);
+        ULONG ulGameVersion = MapGTypeToGameVersion(m_ulVersion & 0xFF000000);
+
+        if (CProxyClickerModule::GetInstance()->m_pLoader)
+                CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_CLICKER_MODULE_COMMAND_SET_VERSION, _MODULE_LOADER_TARGET_GUI, &ulGameVersion, 0);
 
 	CPacketType::SetVersion(m_ulVersion);
 	CPacketType::SetProtocol(m_ulVersion);

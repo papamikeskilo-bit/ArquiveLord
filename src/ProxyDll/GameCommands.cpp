@@ -6,7 +6,23 @@
 #include "EncDec.h"
 #include "LordOfMUdll.h"
 #include "..\_Shared\MuMessages.h"
+#include "..\_Shared\MuUtil.h"
 
+namespace
+{
+        HWND ResolveMuWindowHandle()
+        {
+                HWND hWnd = 0;
+
+                if (CProxyClickerModule::GetInstance()->m_pLoader)
+                        CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_MODULE_LOADER_COMMAND_GET_MUWND, _MODULE_LOADER_TARGET_SELF, (void*)&hWnd, 0);
+
+                if (!hWnd)
+                        hWnd = CMuUtil::FindMuWindow();
+
+                return hWnd;
+        }
+}
 
 /**
  * \brief 
@@ -1570,18 +1586,12 @@ bool CConfigCommandHandler::ProcessCommand(const char* cmd, const char* args)
 {
 	LPARAM lParam = (_stricmp(cmd, "config") == 0) ? 0 : 1;
 
-	if (CProxyClickerModule::GetInstance()->m_pLoader)
-	{
-		HWND hWnd = 0;
-		CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_MODULE_LOADER_COMMAND_GET_MUWND, _MODULE_LOADER_TARGET_SELF, (void*)&hWnd, 0);
+        HWND hWnd = ResolveMuWindowHandle();
 
-		if (hWnd)
-			PostMessage(hWnd, WM_SHOW_SETTINGS_GUI, 0, lParam);
-	}
-	else
-	{
-		GetProxy()->recv_direct(CServerMessagePacket(">> Bad software configuration. Object not found."));
-	}
+        if (hWnd)
+                PostMessage(hWnd, WM_SHOW_SETTINGS_GUI, 0, lParam);
+        else
+                GetProxy()->recv_direct(CServerMessagePacket(">> MU window not found."));
 
 	return true;
 }
@@ -1602,18 +1612,12 @@ bool CAfkCommandHandler::ProcessCommand(const char* cmd, const char* args)
 
 	UINT uMsg = (_stricmp(args, "on") == 0) ? WM_START_CLICKER : WM_STOP_CLICKER;
 
-	if (CProxyClickerModule::GetInstance()->m_pLoader)
-	{
-		HWND hWnd = 0;
-		CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_MODULE_LOADER_COMMAND_GET_MUWND, _MODULE_LOADER_TARGET_SELF, (void*)&hWnd, 0);
+        HWND hWnd = ResolveMuWindowHandle();
 
-		if (hWnd)
-			PostMessage(hWnd, uMsg, 0, 0);
-	}
-	else
-	{
-		GetProxy()->recv_direct(CServerMessagePacket(">> Bad software configuration. Object not found."));
-	}
+        if (hWnd)
+                PostMessage(hWnd, uMsg, 0, 0);
+        else
+                GetProxy()->recv_direct(CServerMessagePacket(">> MU window not found."));
 
 	return true;
 }
@@ -1625,20 +1629,14 @@ bool CAfkCommandHandler::ProcessCommand(const char* cmd, const char* args)
  */
 bool CExitCommandHandler::ProcessCommand(const char* cmd, const char* args)
 {
-	if (CProxyClickerModule::GetInstance()->m_pLoader)
-	{
-		HWND hWnd = 0;
-		CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_MODULE_LOADER_COMMAND_GET_MUWND, _MODULE_LOADER_TARGET_SELF, (void*)&hWnd, 0);
+        HWND hWnd = ResolveMuWindowHandle();
 
-		if (hWnd)
-			PostMessage(hWnd, WM_CLOSE, 0, 0);
-	}
-	else
-	{
-		GetProxy()->recv_direct(CServerMessagePacket(">> Bad software configuration. Object not found."));
-	}
+        if (hWnd)
+                PostMessage(hWnd, WM_CLOSE, 0, 0);
+        else
+                GetProxy()->recv_direct(CServerMessagePacket(">> MU window not found."));
 
-	return true;
+        return true;
 }
 
 
@@ -1943,18 +1941,12 @@ bool CSendKeyCommandHandler::ProcessCommand(const char* cmd, const char* args)
 		return false;
 	}
 
-	if (CProxyClickerModule::GetInstance()->m_pLoader)
-	{
-		HWND hWnd = 0;
-		CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_MODULE_LOADER_COMMAND_GET_MUWND, _MODULE_LOADER_TARGET_SELF, (void*)&hWnd, 0);
+        HWND hWnd = ResolveMuWindowHandle();
 
-		if (hWnd)
-			PostMessage(hWnd, WM_SEND_KEY, 0, (LPARAM)key);
-	}
-	else
-	{
-		GetProxy()->recv_direct(CServerMessagePacket(">> Bad software configuration. Object not found."));
-	}
+        if (hWnd)
+                PostMessage(hWnd, WM_SEND_KEY, 0, (LPARAM)key);
+        else
+                GetProxy()->recv_direct(CServerMessagePacket(">> MU window not found."));
 
 	GetProxy()->recv_direct(CServerMessagePacket(">> %s %s [OK].", cmd, args));
 	return true;
@@ -2075,18 +2067,12 @@ bool CFlashWndCommandHandler::ProcessCommand(const char* cmd, const char* args)
 		return false;
 	}
 
-	if (CProxyClickerModule::GetInstance()->m_pLoader)
-	{
-		HWND hWnd = 0;
-		CProxyClickerModule::GetInstance()->m_pLoader->SendCommand(_MODULE_LOADER_COMMAND_GET_MUWND, _MODULE_LOADER_TARGET_SELF, (void*)&hWnd, 0);
+        HWND hWnd = ResolveMuWindowHandle();
 
-		if (hWnd)
-			FlashWindow(hWnd, TRUE);
-	}
-	else
-	{
-		GetProxy()->recv_direct(CServerMessagePacket(">> Bad software configuration. Object not found."));
-	}
+        if (hWnd)
+                FlashWindow(hWnd, TRUE);
+        else
+                GetProxy()->recv_direct(CServerMessagePacket(">> MU window not found."));
 
 	return true;
 }

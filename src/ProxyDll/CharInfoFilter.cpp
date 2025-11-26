@@ -56,7 +56,8 @@ int CCharInfoFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& context)
 		CGameServerHelloPacket& pktHelo = (CGameServerHelloPacket&)pkt;
 		m_wPlayerId = pktHelo.GetPlayerId();
 
-		CServerMessagePacket pkt2(">> %s ", CT2A(__SOFTWARE_VERSION_ABOUT));
+                CW2AEX<128> aboutVersion(__SOFTWARE_VERSION_ABOUT);
+                CServerMessagePacket pkt2(">> %s ", static_cast<LPCSTR>(aboutVersion));
 		CServerMessagePacket pkt3(">> %s ", __SOFTWARE_COPYRIGHT);
 
 		GetProxy()->recv_direct(pkt2);
@@ -94,11 +95,11 @@ int CCharInfoFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& context)
 	{
 		DWORD ver[] = {__SOFTWARE_VERSION};
 
-		CStringA strMsg;
-		strMsg.Format(" - MU AutoClicker V%d.%04d - ", ver[0], ver[1]);
+                CStringA strMsg;
+                strMsg.Format(" - MU AutoClicker V%d.%04d - ", ver[0], ver[1]);
 
-		CGMMessagePacket pkt2(strMsg);
-		CGMMessagePacket pkt3(" - " __SOFTWARE_COPYRIGHT " - ");
+                CGMMessagePacket pkt2(strMsg);
+                CGMMessagePacket pkt3(" - " __SOFTWARE_COPYRIGHT " - ");
 
 		GetProxy()->recv_direct(pkt2);
 		GetProxy()->recv_direct(pkt3);
@@ -123,16 +124,16 @@ int CCharInfoFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& context)
 
 		if (pktMove.GetId() == m_wPlayerId)
 		{
-			m_bX = pktMove.GetX();
-			m_bY = pktMove.GetY();
+                        m_bX = static_cast<BYTE>(pktMove.GetX());
+                        m_bY = static_cast<BYTE>(pktMove.GetY());
 		}
 	}
 	else if (pkt == CWarpReplyPacket::Type())
 	{
 		CWarpReplyPacket& pkt2 = (CWarpReplyPacket&)pkt;
 
-		m_bX = pkt2.GetX();
-		m_bY = pkt2.GetY();
+                m_bX = static_cast<BYTE>(pkt2.GetX());
+                m_bY = static_cast<BYTE>(pkt2.GetY());
 
 		m_vPlayers.clear();
 		UpdateSuspendedFlag();
@@ -151,8 +152,8 @@ int CCharInfoFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& context)
 			GetProxy()->send_packet(CCharacterSayPacket(m_szCharName, "--afk off"));
 		}
 
-		m_bX = xx;
-		m_bY = yy;
+                m_bX = static_cast<BYTE>(xx);
+                m_bY = static_cast<BYTE>(yy);
 
 		m_vPlayers.clear();
 		UpdateSuspendedFlag();
@@ -161,8 +162,8 @@ int CCharInfoFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& context)
 	{
 		CCharStatsPacket& pkt2 = (CCharStatsPacket&)pkt;
 
-		m_bX = pkt2.GetX();
-		m_bY = pkt2.GetY();
+                m_bX = static_cast<BYTE>(pkt2.GetX());
+                m_bY = static_cast<BYTE>(pkt2.GetY());
 	}
 	else if (pkt == CUpdatePosSTCPacket::Type())
 	{
@@ -170,8 +171,8 @@ int CCharInfoFilter::FilterRecvPacket(CPacket& pkt, CFilterContext& context)
 
 		if (pkt2.GetId() == m_wPlayerId)
 		{
-			m_bX = pkt2.GetX();
-			m_bY = pkt2.GetY();
+                    m_bX = static_cast<BYTE>(pkt2.GetX());
+                    m_bY = static_cast<BYTE>(pkt2.GetY());
 		}
 	}
 	else if (pkt == CLevelUpPacket::Type())
@@ -339,8 +340,8 @@ int CCharInfoFilter::FilterSendPacket(CPacket& pkt, CFilterContext& context)
 	{
 		CUpdatePosCTSPacket& pkt2 = (CUpdatePosCTSPacket&)pkt;
 
-		m_bX = pkt2.GetX();
-		m_bY = pkt2.GetY();
+            m_bX = static_cast<BYTE>(pkt2.GetX());
+            m_bY = static_cast<BYTE>(pkt2.GetY());
 	}
 
 	return 0;
