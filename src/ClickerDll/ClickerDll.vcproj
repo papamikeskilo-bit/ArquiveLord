@@ -26,16 +26,10 @@
 			CharacterSet="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -80,7 +74,7 @@
 				Name="VCLinkerTool"
 				RegisterOutput="false"
 				IgnoreImportLibrary="true"
-				AdditionalDependencies="opengl32.lib glu32.lib UId.lib "
+				AdditionalDependencies="opengl32.lib glu32.lib legacy_stdio_definitions.lib"
 				OutputFile="$(SolutionDir)\bin\$(ConfigurationName)\MUAutoClicker.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=".\UI"
@@ -110,10 +104,6 @@
 			<Tool
 				Name="VCAppVerifierTool"
 			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="del &quot;$(TargetDir)\$(TargetName).ilk&quot; /Q /F"
-			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
@@ -125,16 +115,10 @@
 			CharacterSet="1"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -154,7 +138,8 @@
 				Optimization="2"
 				AdditionalIncludeDirectories="$(SolutionDir)\src\_Shared; .\UI"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_USRDLL;"
-				RuntimeLibrary="0"
+                                RuntimeLibrary="2"
+				BasicRuntimeChecks="0"
 				RuntimeTypeInfo="false"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
@@ -178,7 +163,7 @@
 				RegisterOutput="false"
 				IgnoreImportLibrary="true"
 				AdditionalOptions="/FUNCTIONPADMIN:6"
-				AdditionalDependencies="opengl32.lib UI.lib glu32.lib"
+				AdditionalDependencies="opengl32.lib glu32.lib legacy_stdio_definitions.lib"
 				OutputFile="$(SolutionDir)\bin\$(ConfigurationName)\MUAutoClicker.dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories=".\UI"
@@ -210,10 +195,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="del &quot;$(TargetDir)\$(TargetName).ilk&quot; /Q /F&#x0D;&#x0A;cd $(TargetDir)&#x0D;&#x0A;packer.exe /packall&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -282,11 +263,2318 @@
 				</FileConfiguration>
 			</File>
 		</Filter>
+			<Filter
+				Name="UI"
+				>
+					<File RelativePath=".\UI\GlyphContext.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\Container.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\Gui.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\ThemeManager.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\Font.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\Graphics.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\Component.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\CompoundComponent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\Icon.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\SelectionManager.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<File RelativePath=".\UI\FocusManager.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+					<Filter
+						Name="layout"
+						>
+							<File RelativePath=".\UI\layout\BorderLayout.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\layout\FlowLayout.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\layout\GridLayout.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\layout\LayoutManager.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\layout\PopupLayout.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+						</Filter>
+					<Filter
+						Name="border"
+						>
+							<File RelativePath=".\UI\border\BevelBorder.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\border\Border.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\border\LineBorder.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+						</Filter>
+					<Filter
+						Name="util"
+						>
+							<File RelativePath=".\UI\util\ButtonGroup.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Color.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Dimension.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\DisplayList.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\GradientColor.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Insets.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Interpolator.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\LinearTimeInterpolator.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Observable.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Observer.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Paint.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Point.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\RangeHolder.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\Rectangle.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\TimeBasedInterpolator.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\util\constants\Orientation.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+						</Filter>
+					<Filter
+						Name="component"
+						>
+							<File RelativePath=".\UI\component\AbstractButton.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Button.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\CheckBox.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Dialog.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Frame.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\GLCanvas.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Knob.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Label.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Menu.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\MenuBar.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\MenuItem.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Panel.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\PopupMenu.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\ProgressBar.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\RadioButton.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\ScrollPane.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Scrollbar.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Scroller.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Slider.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\TextField.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\TitleBar.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\ToggleButton.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\component\Window.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+						</Filter>
+					<Filter
+						Name="theme"
+						>
+							<File RelativePath=".\UI\theme\BasicTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\theme\DefaultTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\theme\RangeUtil.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\theme\TextUtil.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\theme\Theme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\theme\ThemeComponent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<Filter Name="Default">
+								<File RelativePath=".\UI\theme\Default\ButtonTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\CheckBoxTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\ComponentTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\DefaultScheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\DialogTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\FrameTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\GLCanvasTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\LabelTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\MenuBarTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\MenuItemTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\MenuTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\MetalScheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\PopupMenuTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\ProgressBarTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\RadioButtonTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\Scheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\ScrollerTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\ScrollbarTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\SliderTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\TextFieldTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\TitleBarTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\ToggleButtonTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\Default\Util.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							</Filter>
+							<Filter Name="basic">
+								<File RelativePath=".\UI\theme\basic\ButtonTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\CheckBoxTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\ComponentTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\DialogTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\KnobTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\LabelTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\MenuBarTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\MenuItemTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\MenuTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\PopupMenuTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\RadioButtonTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\SliderTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\TextFieldTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\TitleBarTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+								<File RelativePath=".\UI\theme\basic\ToggleButtonTheme.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							</Filter>
+						</Filter>
+					<Filter
+						Name="event"
+						>
+							<File RelativePath=".\UI\event\ChangeEvent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\ChangeListener.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\Event.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\EventListener.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\FocusEvent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\FocusListener.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\ItemEvent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\ItemListener.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\KeyEvent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\KeyListener.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\MouseEvent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\MouseListener.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\PropertyEvent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\PropertyListener.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\WindowEvent.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+							<File RelativePath=".\UI\event\WindowListener.cpp" >
+        <FileConfiguration
+                Name="Debug|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+        <FileConfiguration
+                Name="Release|Win32"
+                >
+                <Tool
+                        Name="VCCLCompilerTool"
+                        UsePrecompiledHeader="0"
+                />
+        </FileConfiguration>
+</File>
+						</Filter>
+			</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<Filter
+				Name="UI"
+				>
+					<File RelativePath=".\UI\GlyphContext.h" />
+					<File RelativePath=".\UI\Component.h" />
+					<File RelativePath=".\UI\SelectionManager.h" />
+					<File RelativePath=".\UI\Pointers.h" />
+					<File RelativePath=".\UI\Container.h" />
+					<File RelativePath=".\UI\Gui.h" />
+					<File RelativePath=".\UI\Config.h" />
+					<File RelativePath=".\UI\Icon.h" />
+					<File RelativePath=".\UI\Font.h" />
+					<File RelativePath=".\UI\Graphics.h" />
+					<File RelativePath=".\UI\ThemeManager.h" />
+					<File RelativePath=".\UI\FocusManager.h" />
+					<Filter
+						Name="layout"
+						>
+							<File RelativePath=".\UI\layout\BorderLayout.h" />
+							<File RelativePath=".\UI\layout\FlowLayout.h" />
+							<File RelativePath=".\UI\layout\GridLayout.h" />
+							<File RelativePath=".\UI\layout\LayoutManager.h" />
+							<File RelativePath=".\UI\layout\PopupLayout.h" />
+						</Filter>
+					<Filter
+						Name="border"
+						>
+							<File RelativePath=".\UI\border\BevelBorder.h" />
+							<File RelativePath=".\UI\border\Border.h" />
+							<File RelativePath=".\UI\border\LineBorder.h" />
+						</Filter>
+					<Filter
+						Name="util"
+						>
+							<File RelativePath=".\UI\util\GradientColor.h" />
+							<File RelativePath=".\UI\util\TimeBasedInterpolator.h" />
+							<File RelativePath=".\UI\util\Dimension.h" />
+							<File RelativePath=".\UI\util\Observer.h" />
+							<File RelativePath=".\UI\util\DisplayList.h" />
+							<File RelativePath=".\UI\util\constants\Orientation.h" />
+							<File RelativePath=".\UI\util\Insets.h" />
+							<File RelativePath=".\UI\util\ButtonGroup.h" />
+							<File RelativePath=".\UI\util\Rectangle.h" />
+							<File RelativePath=".\UI\util\Point.h" />
+							<File RelativePath=".\UI\util\LinearTimeInterpolator.h" />
+							<File RelativePath=".\UI\util\RangeHolder.h" />
+							<File RelativePath=".\UI\util\Color.h" />
+							<File RelativePath=".\UI\util\Interpolator.h" />
+							<File RelativePath=".\UI\util\Paint.h" />
+							<File RelativePath=".\UI\util\Observable.h" />
+						</Filter>
+					<Filter
+						Name="component"
+						>
+							<File RelativePath=".\UI\component\Label.h" />
+							<File RelativePath=".\UI\component\Frame.h" />
+							<File RelativePath=".\UI\component\Slider.h" />
+							<File RelativePath=".\UI\component\ScrollPane.h" />
+							<File RelativePath=".\UI\component\PopupMenu.h" />
+							<File RelativePath=".\UI\component\CheckBox.h" />
+							<File RelativePath=".\UI\component\Scrollbar.h" />
+							<File RelativePath=".\UI\component\Knob.h" />
+							<File RelativePath=".\UI\component\TitleBar.h" />
+							<File RelativePath=".\UI\component\MenuBar.h" />
+							<File RelativePath=".\UI\component\ProgressBar.h" />
+							<File RelativePath=".\UI\component\ToggleButton.h" />
+							<File RelativePath=".\UI\component\RadioButton.h" />
+							<File RelativePath=".\UI\component\Menu.h" />
+							<File RelativePath=".\UI\component\TextField.h" />
+							<File RelativePath=".\UI\component\AbstractButton.h" />
+							<File RelativePath=".\UI\component\Window.h" />
+							<File RelativePath=".\UI\component\Dialog.h" />
+							<File RelativePath=".\UI\component\MenuItem.h" />
+							<File RelativePath=".\UI\component\GLCanvas.h" />
+							<File RelativePath=".\UI\component\Button.h" />
+							<File RelativePath=".\UI\component\Panel.h" />
+							<File RelativePath=".\UI\component\Scroller.h" />
+						</Filter>
+					<Filter
+						Name="theme"
+						>
+							<File RelativePath=".\UI\theme\Theme.h" />
+							<File RelativePath=".\UI\theme\RangeUtil.h" />
+							<File RelativePath=".\UI\theme\DefaultTheme.h" />
+							<File RelativePath=".\UI\theme\TextUtil.h" />
+							<File RelativePath=".\UI\theme\ThemeComponent.h" />
+							<File RelativePath=".\UI\theme\BasicTheme.h" />
+							<Filter Name="Default">
+								<File RelativePath=".\UI\theme\Default\MenuTheme.h" />
+								<File RelativePath=".\UI\theme\Default\CheckBoxTheme.h" />
+								<File RelativePath=".\UI\theme\Default\MetalScheme.h" />
+								<File RelativePath=".\UI\theme\Default\DefaultScheme.h" />
+								<File RelativePath=".\UI\theme\Default\ButtonTheme.h" />
+								<File RelativePath=".\UI\theme\Default\TextFieldTheme.h" />
+								<File RelativePath=".\UI\theme\Default\RadioButtonTheme.h" />
+								<File RelativePath=".\UI\theme\Default\DialogTheme.h" />
+								<File RelativePath=".\UI\theme\Default\ToggleButtonTheme.h" />
+								<File RelativePath=".\UI\theme\Default\ScrollbarTheme.h" />
+								<File RelativePath=".\UI\theme\Default\MenuItemTheme.h" />
+								<File RelativePath=".\UI\theme\Default\PopupMenuTheme.h" />
+								<File RelativePath=".\UI\theme\Default\LabelTheme.h" />
+								<File RelativePath=".\UI\theme\Default\Util.h" />
+								<File RelativePath=".\UI\theme\Default\ComponentTheme.h" />
+								<File RelativePath=".\UI\theme\Default\ProgressBarTheme.h" />
+								<File RelativePath=".\UI\theme\Default\Scheme.h" />
+								<File RelativePath=".\UI\theme\Default\TitleBarTheme.h" />
+								<File RelativePath=".\UI\theme\Default\GLCanvasTheme.h" />
+								<File RelativePath=".\UI\theme\Default\FrameTheme.h" />
+								<File RelativePath=".\UI\theme\Default\SliderTheme.h" />
+								<File RelativePath=".\UI\theme\Default\ScrollerTheme.h" />
+								<File RelativePath=".\UI\theme\Default\MenuBarTheme.h" />
+							</Filter>
+							<Filter Name="basic">
+								<File RelativePath=".\UI\theme\basic\MenuTheme.h" />
+								<File RelativePath=".\UI\theme\basic\CheckBoxTheme.h" />
+								<File RelativePath=".\UI\theme\basic\ButtonTheme.h" />
+								<File RelativePath=".\UI\theme\basic\TextFieldTheme.h" />
+								<File RelativePath=".\UI\theme\basic\RadioButtonTheme.h" />
+								<File RelativePath=".\UI\theme\basic\KnobTheme.h" />
+								<File RelativePath=".\UI\theme\basic\DialogTheme.h" />
+								<File RelativePath=".\UI\theme\basic\ToggleButtonTheme.h" />
+								<File RelativePath=".\UI\theme\basic\MenuItemTheme.h" />
+								<File RelativePath=".\UI\theme\basic\PopupMenuTheme.h" />
+								<File RelativePath=".\UI\theme\basic\LabelTheme.h" />
+								<File RelativePath=".\UI\theme\basic\ComponentTheme.h" />
+								<File RelativePath=".\UI\theme\basic\TitleBarTheme.h" />
+								<File RelativePath=".\UI\theme\basic\SliderTheme.h" />
+								<File RelativePath=".\UI\theme\basic\MenuBarTheme.h" />
+							</Filter>
+						</Filter>
+					<Filter
+						Name="event"
+						>
+							<File RelativePath=".\UI\event\EventListener.h" />
+							<File RelativePath=".\UI\event\FocusListener.h" />
+							<File RelativePath=".\UI\event\PropertyEvent.h" />
+							<File RelativePath=".\UI\event\ItemListener.h" />
+							<File RelativePath=".\UI\event\WindowEvent.h" />
+							<File RelativePath=".\UI\event\ItemEvent.h" />
+							<File RelativePath=".\UI\event\PropertyListener.h" />
+							<File RelativePath=".\UI\event\Event.h" />
+							<File RelativePath=".\UI\event\FocusEvent.h" />
+							<File RelativePath=".\UI\event\WindowListener.h" />
+							<File RelativePath=".\UI\event\KeyListener.h" />
+							<File RelativePath=".\UI\event\KeyEvent.h" />
+							<File RelativePath=".\UI\event\MouseListener.h" />
+							<File RelativePath=".\UI\event\ChangeListener.h" />
+							<File RelativePath=".\UI\event\MouseEvent.h" />
+							<File RelativePath=".\UI\event\ChangeEvent.h" />
+						</Filter>
+			</Filter>
 			<File
 				RelativePath=".\AdvSettingsDialog.h"
 				>
